@@ -1,0 +1,12 @@
+NOTIFICATION {
+		IDENTIFICADOR{%8c4ac2a2-e397-4052-b5fc-911277ab100e%}
+		AUTOR{nombre{"Alejandro Gomez Orjuela"}correo{"alejandro.gomez8170@uco.net.co"}}
+		TITULO{"COMPILADORES"}
+		CONTENIDO{"Hola este es una notificacion para la materia compiladores"}
+		FECHACREACION{"23/12/2023"}
+		ESTADO{"ENVIADA"}
+		FECHAPROGRAMADA{"23/12/2023"}
+		{nombre{"Maria Paula Marin Diaz"}correo{"Maria.marin6788@uco.net.co"}
+		 nombre{"Daniel Felipe"}correo{"Daniel.Felipe6788@uco.net.co"}
+		 nombre{"Marcela Marin Orjuela"}correo{"Marcela.orjuela6788@uco.net.co"}}
+}
