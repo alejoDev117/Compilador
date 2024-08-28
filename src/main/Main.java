@@ -36,7 +36,7 @@ public class Main {
                 "\t\t{nombre{\"Maria Paula Marin Diaz\"}correo{\"Maria.marin6788@uco.net.co\"}\n" +
                 "\t\t nombre{\"Daniel Felipe\"}correo{\"Daniel.Felipe6788@uco.net.co\"}\n" +
                 "\t\t nombre{\"Marcela Marin Orjuela\"}correo{\"Marcela.orjuela6788@uco.net.co\"}}\n" +
-                "\t\t nombre{\"Marcela Marin Orjuela\"}correo{\"Marcela.orjuela6788@uco.net.co\"}}\n" +
+                "\t\t nombre{\"Francisco Cadavid Orjuela\"}correo{\"Francisco.Cadavida34788@uco.net.co\"}}\n" +
                 "}";
 
         Lexer lexer = new Lexer(input);
