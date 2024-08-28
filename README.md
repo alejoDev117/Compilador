@@ -6,7 +6,6 @@ Este proyecto es un compilador en Java que traduce código fuente de un lenguaje
 
 La estructura de carpetas en la raíz del proyecto es la siguiente:
 
-
 ### /lexer
 
 Esta carpeta contiene los componentes relacionados con el análisis léxico:
@@ -23,16 +22,7 @@ Contiene los archivos de entrada y datos necesarios para el análisis:
 
 ### /main
 
-Contiene la lógica principal y los componentes del compilador:
+Contiene la lógica principal del compilador:
 
 - **`Main.java`**: Punto de entrada del programa. Aquí se inicia el compilador y se gestionan las tareas principales.
-- **`Parser.java`**: Implementa el análisis sintáctico que verifica si los tokens siguen las reglas gramaticales del lenguaje.
-
-## Contribuir
-
-Si deseas contribuir al proyecto, por favor, realiza un fork del repositorio y envía un pull request con tus cambios. Asegúrate de seguir las directrices de contribución incluidas en la documentación.
-
-## Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más detalles.
 
