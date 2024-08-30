@@ -5,7 +5,7 @@ Este proyecto es un compilador en Java que traduce código fuente de un lenguaje
 ## Estructura del Proyecto
 
 La estructura de carpetas en la raíz del proyecto es la siguiente:
-![Diagrama de paquetes](src/data/diagramapaquetes.jgp)
+![Diagrama de paquetes](src/data/diagramapaquetes.jpg)
 
 ### /lexer
 
