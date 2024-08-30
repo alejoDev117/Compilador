@@ -21,7 +21,7 @@ public class Main {
 <persona> -> nombre{"str"}correo{"str"}
 
 <destinatarios> -> <persona><destinatarios>
-		-> EPSILON
+		        -> EPSILON
      */
     public static void main(String[] args) {
         //EJEMPLO
