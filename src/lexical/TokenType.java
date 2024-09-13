@@ -17,5 +17,7 @@ public enum TokenType {
         CADENA,
         FECHA,
         UUID,
-        DESCONOCIDO
+        DESCONOCIDO,
+        DESTINATARIOS,
+        EOF
 }

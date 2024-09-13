@@ -1,0 +1,4 @@
+<Notification> -> NOTIFICATION { IDENTIFICADOR {%UUID%} <autor> TITULO { "str" } CONTENIDO { "str" } FECHACREACION { "dd/mm/aaaa" } ESTADO { "str" } FECHAPROGRAMADA { "dd/mm/aaaa" } <destinatarios> }
+<autor> -> PERSONA { <persona> }
+<persona> -> nombre { "str" } correo { "str" }
+<destinatarios> -> <persona> <destinatarios> | EPSILON

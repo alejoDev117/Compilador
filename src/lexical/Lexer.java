@@ -4,57 +4,78 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lexer {
-
     private String source;
     private int position;
+    private int line;
+    private int column;
     private List<Token> tokens;
 
     public Lexer(String source) {
         this.source = source;
         this.position = 0;
+        this.line = 1; // Comienza en la primera línea
+        this.column = 0; // Comienza en la primera columna
         this.tokens = new ArrayList<>();
     }
 
-    //Metodo principal donde se llaman los demas metodos y se realiza toda la logica de tokeninzacion del codigo de ejemplo
     public List<Token> tokenize() {
         while (position < source.length()) {
             char currentChar = source.charAt(position);
-            //Si el caracter es espacio o salto de linea lo descarta
+
+            // Manejar espacios en blanco
             if (Character.isWhitespace(currentChar)) {
+                if (currentChar == '\n') {
+                    line++;
+                    column = 0;
+                } else {
+                    column++;
+                }
                 position++;
                 continue;
             }
+
+            int tokenStartCol = column;
+
             switch (currentChar) {
                 case '{':
                 case '}':
-                    tokens.add(new Token(TokenType.LLAVE, String.valueOf(currentChar)));
+                    tokens.add(new Token(TokenType.LLAVE, String.valueOf(currentChar), line, column));
                     position++;
+                    column++;
                     break;
+
                 case '%':
                     if (isUUID()) {
-                        tokens.add(new Token(TokenType.UUID, extractUUID()));
+                        tokens.add(new Token(TokenType.UUID, extractUUID(), line, tokenStartCol));
                     } else {
-                        tokens.add(new Token(TokenType.PORCENTAJE, "%"));
+                        tokens.add(new Token(TokenType.PORCENTAJE, "%", line, column));
                         position++;
+                        column++;
                     }
                     break;
+
                 case '"':
-                    tokens.add(new Token(TokenType.CADENA, extractString()));
+                    tokens.add(new Token(TokenType.CADENA, extractString(), line, tokenStartCol));
                     break;
-                default://En caso de que el caracter actual no sea ninguna de las opciones anteriores se llama extractWord
+
+                default:
                     if (Character.isLetter(currentChar)) {
                         String word = extractWord();
-                        tokens.add(new Token(getTokenTypeForWord(word), word));
+                        tokens.add(new Token(getTokenTypeForWord(word), word, line, tokenStartCol));
                     } else {
-                        tokens.add(new Token(TokenType.DESCONOCIDO, Character.toString(currentChar)));
+                        tokens.add(new Token(TokenType.DESCONOCIDO, Character.toString(currentChar), line, column));
                         position++;
+                        column++;
                     }
             }
         }
 
+        // Añadir el token EOF al final
+        tokens.add(new Token(TokenType.EOF, "", line, column));
         return tokens;
     }
 
+    // Verificar si el token es un UUID
     private boolean isUUID() {
         int startPosition = position + 1;
         int endPosition = startPosition + 36;
@@ -66,38 +87,46 @@ public class Lexer {
 
         return false;
     }
-   //Se extrae todo el valor del uuid que esta entre porcentajes
+
+    // Extraer el UUID del texto
     private String extractUUID() {
         position++;
         String uuid = source.substring(position, position + 36);
         position += 36;
+        column += 38; // UUID tiene 36 caracteres más dos símbolos de porcentaje
         position++;
         return uuid;
     }
-   //Se extrae el valor del string que está entre comillas
+
+    // Extraer una cadena entre comillas
     private String extractString() {
         StringBuilder sb = new StringBuilder();
         position++;
+        column++;
         while (position < source.length() && source.charAt(position) != '"') {
             sb.append(source.charAt(position));
             position++;
+            column++;
         }
         position++;
+        column++;
         return sb.toString();
     }
-    //Aqui se extraen palabras que no son reservadas, como fecha,contenido de string etc
+
+    // Extraer una palabra del texto
     private String extractWord() {
         StringBuilder sb = new StringBuilder();
         while (position < source.length() && (Character.isLetter(source.charAt(position)) || source.charAt(position) == '.')) {
             sb.append(source.charAt(position));
             position++;
+            column++;
         }
         return sb.toString();
     }
-    //Asigna desde el enum el valor del token de la palabra extraida
+
+    // Obtener el tipo de token basado en la palabra extraída
     private TokenType getTokenTypeForWord(String word) {
         switch (word) {
-            //En caso de que la palabra sea reservada
             case "NOTIFICATION":
                 return TokenType.NOTIFICATION;
             case "IDENTIFICADOR":
@@ -119,7 +148,6 @@ public class Lexer {
             case "correo":
                 return TokenType.CORREO;
             default:
-                //Si no, debe ser un UUID y una fecha con estos REX
                 if (word.matches("[0-9a-fA-F\\-]{36}")) {
                     return TokenType.UUID;
                 } else if (word.matches("\\d{2}/\\d{2}/\\d{4}")) {
