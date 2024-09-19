@@ -12,32 +12,44 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        String relativePath = "src/data/ejemplo_gramatica.txt";
-        StringBuilder content = new StringBuilder();
+        Scanner scanner = new Scanner(System.in);
+//rutas src/data/ejemplo_gramatica.txt, src/data/entrada.txt
+
+        // Solicitar la ruta de la gramática al usuario
+        System.out.print("Ingrese la ruta del archivo de gramática: ");
+        String grammarPath = scanner.nextLine();
 
         // Cargar la gramática
         GrammarLoader grammarLoader = new GrammarLoader();
         try {
-            grammarLoader.loadGrammar(relativePath);
+            grammarLoader.loadGrammar(grammarPath);
         } catch (IOException e) {
             System.err.println("Error cargando la gramática: " + e.getMessage());
             return;
         }
 
+        // Solicitar la ruta del archivo de entrada al usuario
+        System.out.print("Ingrese la ruta del archivo a evaluar: ");
+        String inputFilePath = scanner.nextLine();
+
+        StringBuilder content = new StringBuilder();
+
         // Leer el archivo de entrada
-        String inputFilePath = "src/data/entrada.txt";
         try (BufferedReader reader = new BufferedReader(new FileReader(inputFilePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 content.append(line).append("\n");
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException("Archivo no encontrado: " + e.getMessage());
+            System.err.println("Archivo no encontrado: " + e.getMessage());
+            return;
         } catch (IOException e) {
-            throw new RuntimeException("Error de IO: " + e.getMessage());
+            System.err.println("Error de IO: " + e.getMessage());
+            return;
         }
 
         // Tokenizar el contenido
