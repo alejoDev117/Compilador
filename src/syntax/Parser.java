@@ -56,8 +56,8 @@ public class Parser {
         if (rule == null) throw new ParseException("Rule for <Notification> not found.");
 
         ASTNode node = new ASTNode(TokenType.NOTIFICATION, "Notification");
-        consume(TokenType.NOTIFICATION, "Se esperaba 'NOTIFICATION'");
-        consume(TokenType.LLAVE, "Se esperaba '{' después de 'NOTIFICATION'");
+        consume(TokenType.NOTIFICATION, "'NOTIFICATION'");
+        consume(TokenType.LLAVE, "'{' después de 'NOTIFICATION'");
 
         parseIdentifier(node);
         parseAutor(node);
@@ -68,84 +68,84 @@ public class Parser {
         parseScheduledDate(node);
         parseRecipients(node);
 
-        consume(TokenType.LLAVE, "Se esperaba '}' después de <Notification>");
+        consume(TokenType.LLAVE, "'}' después de <Notification>");
         return node;
     }
 
     private void parseIdentifier(ASTNode node) {
-        consume(TokenType.IDENTIFICADOR, "Se esperaba 'IDENTIFICADOR'");
-        consume(TokenType.LLAVE, "Se esperaba '{' después de 'IDENTIFICADOR'");
-        consume(TokenType.UUID, "Se esperaba 'UUID'");
-        consume(TokenType.LLAVE, "Se esperaba '}' después de 'UUID'");
+        consume(TokenType.IDENTIFICADOR, "'IDENTIFICADOR'");
+        consume(TokenType.LLAVE, "'{' después de 'IDENTIFICADOR'");
+        consume(TokenType.UUID, "'UUID'");
+        consume(TokenType.LLAVE, "'}' después de 'UUID'");
     }
 
     private void parseAutor(ASTNode node) {
-        consume(TokenType.AUTOR, "Se esperaba 'AUTOR'");
-        consume(TokenType.LLAVE, "Se esperaba '{' después de 'AUTOR'");
+        consume(TokenType.AUTOR, "'AUTOR'");
+        consume(TokenType.LLAVE, "'{' después de 'AUTOR'");
         node.addChild(parsePersona());
-        consume(TokenType.LLAVE, "Se esperaba '}' después de 'persona'");
+        consume(TokenType.LLAVE, "'}' después de 'persona'");
     }
 
     private void parseTitle(ASTNode node) {
-        consume(TokenType.TITULO, "Se esperaba 'TITULO'");
-        consume(TokenType.LLAVE, "Se esperaba '{' después de 'TITULO'");
-        node.addChild(new ASTNode(TokenType.CADENA, consume(TokenType.CADENA, "Se esperaba 'CADENA'").getLexeme()));
-        consume(TokenType.LLAVE, "Se esperaba '}' después de 'CADENA'");
+        consume(TokenType.TITULO, "'TITULO'");
+        consume(TokenType.LLAVE, "'{' después de 'TITULO'");
+        node.addChild(new ASTNode(TokenType.CADENA, consume(TokenType.CADENA, "'CADENA'").getLexeme()));
+        consume(TokenType.LLAVE, "'}' después de 'CADENA'");
     }
 
     private void parseContent(ASTNode node) {
-        consume(TokenType.CONTENIDO, "Se esperaba 'CONTENIDO'");
-        consume(TokenType.LLAVE, "Se esperaba '{' después de 'CONTENIDO'");
-        node.addChild(new ASTNode(TokenType.CADENA, consume(TokenType.CADENA, "Se esperaba 'CADENA'").getLexeme()));
-        consume(TokenType.LLAVE, "Se esperaba '}' después de 'CADENA'");
+        consume(TokenType.CONTENIDO, "'CONTENIDO'");
+        consume(TokenType.LLAVE, "'{' después de 'CONTENIDO'");
+        node.addChild(new ASTNode(TokenType.CADENA, consume(TokenType.CADENA, "'CADENA'").getLexeme()));
+        consume(TokenType.LLAVE, "'}' después de 'CADENA'");
     }
 
     private void parseCreationDate(ASTNode node) {
-        consume(TokenType.FECHACREACION, "Se esperaba 'FECHACREACION'");
-        consume(TokenType.LLAVE, "Se esperaba '{' después de 'FECHACREACION'");
-        node.addChild(new ASTNode(TokenType.CADENA, consume(TokenType.CADENA, "Se esperaba 'CADENA'").getLexeme()));
-        consume(TokenType.LLAVE, "Se esperaba '}' después de 'CADENA'");
+        consume(TokenType.FECHACREACION, "'FECHACREACION'");
+        consume(TokenType.LLAVE, "'{' después de 'FECHACREACION'");
+        node.addChild(new ASTNode(TokenType.CADENA, consume(TokenType.CADENA, "'CADENA'").getLexeme()));
+        consume(TokenType.LLAVE, "'}' después de 'CADENA'");
     }
 
     private void parseState(ASTNode node) {
-        consume(TokenType.ESTADO, "Se esperaba 'ESTADO'");
-        consume(TokenType.LLAVE, "Se esperaba '{' después de 'ESTADO'");
-        node.addChild(new ASTNode(TokenType.CADENA, consume(TokenType.CADENA, "Se esperaba 'CADENA'").getLexeme()));
-        consume(TokenType.LLAVE, "Se esperaba '}' después de 'CADENA'");
+        consume(TokenType.ESTADO, "'ESTADO'");
+        consume(TokenType.LLAVE, "'{' después de 'ESTADO'");
+        node.addChild(new ASTNode(TokenType.CADENA, consume(TokenType.CADENA, "'CADENA'").getLexeme()));
+        consume(TokenType.LLAVE, "'}' después de 'CADENA'");
     }
 
     private void parseScheduledDate(ASTNode node) {
-        consume(TokenType.FECHAPROGRAMADA, "Se esperaba 'FECHAPROGRAMADA'");
-        consume(TokenType.LLAVE, "Se esperaba '{' después de 'FECHAPROGRAMADA'");
-        node.addChild(new ASTNode(TokenType.CADENA, consume(TokenType.CADENA, "Se esperaba 'CADENA'").getLexeme()));
-        consume(TokenType.LLAVE, "Se esperaba '}' después de 'CADENA'");
+        consume(TokenType.FECHAPROGRAMADA, "'FECHAPROGRAMADA'");
+        consume(TokenType.LLAVE, "'{' después de 'FECHAPROGRAMADA'");
+        node.addChild(new ASTNode(TokenType.CADENA, consume(TokenType.CADENA, "'CADENA'").getLexeme()));
+        consume(TokenType.LLAVE, "'}' después de 'CADENA'");
     }
 
     private void parseRecipients(ASTNode node) {
-        consume(TokenType.LLAVE, "Se esperaba '{' antes de <destinatarios>");
+        consume(TokenType.LLAVE, "'{' antes de <destinatarios>");
         while (check(TokenType.NOMBRE)) {
             node.addChild(parsePersona());
         }
-        consume(TokenType.LLAVE, "Se esperaba '}' después de <destinatarios>");
+        consume(TokenType.LLAVE, "'}' después de <destinatarios>");
     }
 
     private ASTNode parsePersona() {
         ASTNode node = new ASTNode(TokenType.PERSONA, "Persona");
-        consume(TokenType.NOMBRE, "Se esperaba 'NOMBRE'");
-        consume(TokenType.LLAVE, "Se esperaba '{' después de 'NOMBRE'");
-        node.addChild(new ASTNode(TokenType.CADENA, consume(TokenType.CADENA, "Se esperaba 'CADENA'").getLexeme()));
-        consume(TokenType.LLAVE, "Se esperaba '}' después de 'CADENA'");
+        consume(TokenType.NOMBRE, "'NOMBRE'");
+        consume(TokenType.LLAVE, "'{' después de 'NOMBRE'");
+        node.addChild(new ASTNode(TokenType.CADENA, consume(TokenType.CADENA, "'CADENA'").getLexeme()));
+        consume(TokenType.LLAVE, "'}' después de 'CADENA'");
 
-        consume(TokenType.CORREO, "Se esperaba 'CORREO'");
-        consume(TokenType.LLAVE, "Se esperaba '{' después de 'CORREO'");
-        node.addChild(new ASTNode(TokenType.CADENA, consume(TokenType.CADENA, "Se esperaba 'CADENA'").getLexeme()));
-        consume(TokenType.LLAVE, "Se esperaba '}' después de 'CADENA'");
+        consume(TokenType.CORREO, "'CORREO'");
+        consume(TokenType.LLAVE, "'{' después de 'CORREO'");
+        node.addChild(new ASTNode(TokenType.CADENA, consume(TokenType.CADENA, "'CADENA'").getLexeme()));
+        consume(TokenType.LLAVE, "'}' después de 'CADENA'");
 
         return node;
     }
 
     private String buildErrorMessage(Token token, String message, TokenType expectedType) {
-        return String.format("Error de sintaxis en línea %d, columna %d: %s. Se esperaba '%s', pero se encontró '%s'.",
-                token.getLine(), token.getColumn(), message, expectedType.name(), token.getLexeme());
+        return String.format("Error de sintaxis en línea %d, columna %d: Se esperaba %s, pero se encontró '%s'.",
+                token.getLine(), token.getColumn(), message, token.getLexeme());
     }
 }
