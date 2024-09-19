@@ -15,6 +15,16 @@ Esta carpeta contiene los componentes relacionados con el análisis léxico:
 - **`Token.java`**: Define la estructura de un token, que incluye el tipo de token y su valor.
 - **`TokenType.java`**: Enumera todos los tipos de tokens que el lexer puede identificar.
 
+### /Syntax
+
+Esta carpeta contiene los componentes relacionados con el análisis Sintáctico:
+
+- **`Parser.java`**: Clase donde se implementa el analisis sintáctico, asi como la creacion del arbol recursivo.
+- **`ASTNode.java`**: Define la estructura del arbol sintáctico recursivo.
+
+Arbol sintáctico de gramática base
+![Arbol sintáctico](src/data/arbolsintáctico.png)
+
 ### /data
 
 Contiene los archivos de entrada y datos necesarios para el análisis:
@@ -26,4 +36,10 @@ Contiene los archivos de entrada y datos necesarios para el análisis:
 Contiene la lógica principal del compilador:
 
 - **`Main.java`**: Punto de entrada del programa. Aquí se inicia el compilador y se gestionan las tareas principales.
+
+### /utils
+#### /exceptions 
+-Paquete donde están todas las clases de tipo excepcion que requiera el programa, como excepciones de tipo personalizadas.
+#### /loader
+-Paquete donde están todas las clases relacionadas con cargar archivos requeridos para el compilador dada una ruta especifica.
 
