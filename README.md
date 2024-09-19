@@ -2,6 +2,9 @@
 
 Este proyecto es un compilador en Java que traduce código fuente de un lenguaje específico a HTML. A continuación se describe la estructura del proyecto y su contenido.
 ![Flujo de funcionamiento del compilador](src/data/Flujo.jpg)
+# Gramática base
+![Gramática base](src/data/gramatica.png)
+
 ## Estructura del Proyecto
 
 La estructura de carpetas en la raíz del proyecto es la siguiente:
