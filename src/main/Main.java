@@ -64,10 +64,10 @@ public class Main {
         Parser parser = new Parser(tokens, grammarLoader);
         try {
             ASTNode ast = parser.parse();
-            System.out.println("El análisis sintáctico fue exitoso.");
+            System.out.println("El análisis sintáctico fue exitoso cadena válida.");
             System.out.println(ast);
         } catch (ParseException e) {
-            System.err.println("Error en el análisis sintáctico: " + e.getMessage());
+            System.err.println("Error en el análisis sintáctico cadena inválida: " + e.getMessage());
         }
     }
 }

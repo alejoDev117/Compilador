@@ -53,11 +53,11 @@ public class Parser {
 
     private ASTNode parseNotification() {
         String rule = grammarLoader.getRule("<Notification>");
-        if (rule == null) throw new ParseException("Rule for <Notification> not found.");
+        if (rule == null) throw new ParseException("Regla para <Notification> no encontrada.");
 
         ASTNode node = new ASTNode(TokenType.NOTIFICATION, "Notification");
-        consume(TokenType.NOTIFICATION, "'NOTIFICATION'");
-        consume(TokenType.LLAVE, "'{' después de 'NOTIFICATION'");
+        consume(TokenType.NOTIFICATION, "Se esperaba 'NOTIFICATION'");
+        consume(TokenType.LLAVE, "Se esperaba '{' después de 'NOTIFICATION'");
 
         parseIdentifier(node);
         parseAutor(node);
@@ -68,9 +68,17 @@ public class Parser {
         parseScheduledDate(node);
         parseRecipients(node);
 
-        consume(TokenType.LLAVE, "'}' después de <Notification>");
+        consume(TokenType.LLAVE, "Se esperaba '}' después de <Notification>");
+
+        // Verificar que no haya tokens adicionales después del cierre de la Notification
+        if (!isAtEnd()) {
+            Token extraToken = peek();  // Obtener el token inesperado
+            throw new ParseException("Se esperaba el final del archivo, pero se encontró '" + extraToken.getLexeme() + "' en línea " + extraToken.getLine() + ", columna " + extraToken.getColumn());
+        }
+
         return node;
     }
+
 
     private void parseIdentifier(ASTNode node) {
         consume(TokenType.IDENTIFICADOR, "'IDENTIFICADOR'");
