@@ -14,7 +14,7 @@ public class Lexer {
         this.source = source;
         this.position = 0;
         this.line = 1; // Comienza en la primera línea
-        this.column = 0; // Comienza en la primera columna
+        this.column = 1; // Comienza en la primera columna
         this.tokens = new ArrayList<>();
     }
 
@@ -22,13 +22,13 @@ public class Lexer {
         while (position < source.length()) {
             char currentChar = source.charAt(position);
 
-            // Manejar espacios en blanco
+            // Manejar espacios en blanco, incluidos espacios y tabulaciones
             if (Character.isWhitespace(currentChar)) {
                 if (currentChar == '\n') {
-                    line++;
-                    column = 0;
+                    line++; // Incrementar la línea
+                    column = 1; // Reiniciar la columna al inicio de la nueva línea
                 } else {
-                    column++;
+                    column++; // Contar cada espacio o tabulación como un avance de columna
                 }
                 position++;
                 continue;
