@@ -26,4 +26,7 @@ public class GrammarLoader {
     public String getRule(String nonTerminal) {
         return rules.get(nonTerminal);
     }
+    public Map<String, String> getRule() {
+        return rules;
+    }
 }

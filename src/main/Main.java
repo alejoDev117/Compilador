@@ -27,6 +27,7 @@ public class Main {
         GrammarLoader grammarLoader = new GrammarLoader();
         try {
             grammarLoader.loadGrammar(grammarPath);
+            System.out.println(grammarLoader.getRule());
         } catch (IOException e) {
             System.err.println("Error cargando la gramática: " + e.getMessage());
             return;
