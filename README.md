@@ -31,8 +31,13 @@ Arbol sintáctico de gramática base
 ### /Semantic
 
 Esta carpeta contiene los componentes relacionados con el análisis Semántico, las dos reglas que se deben garantizar son:
-**`1-`**El autor de una notificacion no puede ser parte de los destinatarios
-**`2-`**Los destinatarios no pueden repetirse
+
+1. **El autor de una notificación no puede ser parte de los destinatarios.**
+   - Esta regla asegura que el autor no se incluya en la lista de destinatarios, evitando conflictos de comunicación.
+
+2. **Los destinatarios no pueden repetirse.**
+   - Se debe validar que no haya destinatarios duplicados en la lista, asegurando que cada destinatario sea único.
+
 
 ### /data
 
