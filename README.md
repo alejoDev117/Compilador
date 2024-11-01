@@ -28,6 +28,12 @@ Esta carpeta contiene los componentes relacionados con el análisis Sintáctico:
 Arbol sintáctico de gramática base
 ![Arbol sintáctico](src/data/arbolsintáctico.png)
 
+### /Semantic
+
+Esta carpeta contiene los componentes relacionados con el análisis Semántico, las dos reglas que se deben garantizar son:
+**`1-`**El autor de una notificacion no puede ser parte de los destinatarios
+**`2-`**Los destinatarios no pueden repetirse
+
 ### /data
 
 Contiene los archivos de entrada y datos necesarios para el análisis:
