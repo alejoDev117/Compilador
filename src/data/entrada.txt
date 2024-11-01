@@ -8,6 +8,5 @@ NOTIFICATION {
 		FECHAPROGRAMADA{"23/12/2023"}
 		{nombre{"Maria Paula Marin Diaz"}correo{"Maria.marin6788@uco.net.co"}
 		 nombre{"Daniel Felipe"}correo{"Daniel.Felipe6788@uco.net.co"}
-		 nombre{"Marcela Marin Orjuela"}correo{"Marcela.orjuela6788@uco.net.co"}
 		 nombre{"Marcela Marin Orjuela"}correo{"Marcela.orjuela6788@uco.net.co"}}
 }

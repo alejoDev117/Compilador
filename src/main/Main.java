@@ -1,11 +1,14 @@
 package main;
 
+import utils.exceptions.SemanticException;
 import utils.loader.GrammarLoader;
 import lexical.Lexer;
 import lexical.Token;
 import syntax.ASTNode;
 import syntax.Parser;
 import utils.exceptions.ParseException;
+import semantic.SemanticAnalyzer;
+
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -18,7 +21,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 //rutas src/data/ejemplo_gramatica.txt, src/data/entrada.txt
-
         // Solicitar la ruta de la gramática al usuario
         System.out.print("Ingrese la ruta del archivo de gramática: ");
         String grammarPath = scanner.nextLine();
@@ -27,6 +29,7 @@ public class Main {
         GrammarLoader grammarLoader = new GrammarLoader();
         try {
             grammarLoader.loadGrammar(grammarPath);
+            System.out.println("Gramática cargada correctamente: ");
             System.out.println(grammarLoader.getRule());
         } catch (IOException e) {
             System.err.println("Error cargando la gramática: " + e.getMessage());
@@ -57,6 +60,7 @@ public class Main {
         Lexer lexer = new Lexer(content.toString());
         List<Token> tokens = lexer.tokenize();
 
+        System.out.println("Tokens generados:");
         for (Token token : tokens) {
             System.out.println(token);
         }
@@ -65,10 +69,18 @@ public class Main {
         Parser parser = new Parser(tokens, grammarLoader);
         try {
             ASTNode ast = parser.parse();
-            System.out.println("El análisis sintáctico fue exitoso cadena válida.");
+            System.out.println("El análisis sintáctico fue exitoso. Cadena válida.");
             System.out.println(ast);
+
+            // Análisis semántico
+            SemanticAnalyzer semanticAnalyzer = new SemanticAnalyzer(content.toString());
+            semanticAnalyzer.analyze();
+            System.out.println("El análisis semántico fue exitoso. No se encontraron errores.");
+
         } catch (ParseException e) {
-            System.err.println("Error en el análisis sintáctico cadena inválida: " + e.getMessage());
+            System.err.println("Error en el análisis sintáctico: cadena inválida. " + e.getMessage());
+        } catch (SemanticException e) {
+            System.err.println("Error en el análisis semántico: cadena inválida. " + e.getMessage());
         }
     }
 }
