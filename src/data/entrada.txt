@@ -1,13 +1,21 @@
 NOTIFICATION {
-		IDENTIFICADOR{%8c4ac2a2-e397-4052-b5fc-911277ab100e%}
-		AUTOR{nombre{"Alejandro Gomez Orjuela"}correo{"alejandro.gomez8170@uco.net.co"}}
-		TITULO{"COMPILADORES"}
-		CONTENIDO{"Hola este es una notificacion para la materia compiladores"}
-		FECHACREACION{"23/12/2023"}
-		ESTADO{"ENVIADA"}
-		FECHAPROGRAMADA{"23/12/2023"}
-		{nombre{"Maria Paula Marin Diaz"}correo{"Maria.marin6788@uco.net.co"}
-		 nombre{"Laura Marin Diaz"}correo{"laura.Diaz6348@uco.net.co"}
-		 nombre{"Daniel Felipe"}correo{"Daniel.Felipe6788@uco.net.co"}
-		 nombre{"Marcela Marin Orjuela"}correo{"Marcela.orjuela6788@uco.net.co"}}
+		IDENTIFICADOR{%d7b5f04b-d5e0-45f2-8d72-99bc4f303c30%}
+		AUTOR{nombre{"Carlos Alberto Reyes"}correo{"carlos.reyes1234@uco.net.co"}}
+		TITULO{"Nuevas Actualizaciones en el Proyecto de Investigación"}
+		CONTENIDO{"Estimados estudiantes, les informamos sobre las últimas actualizaciones del proyecto. Por favor revisen los cambios."}
+		FECHACREACION{"15/11/2024"}
+		ESTADO{"PENDIENTE"}
+		FECHAPROGRAMADA{"18/11/2024"}
+		{nombre{"Eduardo Ramírez"}correo{"eduardo.ramirez@uco.net.co"}
+		 nombre{"Ana María Pérez"}correo{"ana.perez@uco.net.co"}
+		 nombre{"Rafael Martínez"}correo{"rafael.martinez@uco.net.co"}
+		 nombre{"Lucía González"}correo{"lucia.gonzalez@uco.net.co"}
+		 nombre{"Tomás Hernández"}correo{"tomas.hernandez@uco.net.co"}
+		 nombre{"Beatriz Fuentes"}correo{"beatriz.fuentes@uco.net.co"}
+		 nombre{"Cristian Silva"}correo{"cristian.silva@uco.net.co"}
+		 nombre{"Patricia Díaz"}correo{"patricia.diaz@uco.net.co"}
+		 nombre{"Felipe Sánchez"}correo{"felipe.sanchez@uco.net.co"}
+		 nombre{"Karla Rodríguez"}correo{"karla.rodriguez@uco.net.co"}
+		 nombre{"Ricardo Pérez"}correo{"ricardo.perez@uco.net.co"}
+		 nombre{"Verónica Castro"}correo{"veronica.castro@uco.net.co"}}
 }
