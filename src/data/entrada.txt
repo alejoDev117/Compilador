@@ -7,6 +7,7 @@ NOTIFICATION {
 		ESTADO{"ENVIADA"}
 		FECHAPROGRAMADA{"23/12/2023"}
 		{nombre{"Maria Paula Marin Diaz"}correo{"Maria.marin6788@uco.net.co"}
+		 nombre{"Laura Marin Diaz"}correo{"laura.Diaz6348@uco.net.co"}
 		 nombre{"Daniel Felipe"}correo{"Daniel.Felipe6788@uco.net.co"}
 		 nombre{"Marcela Marin Orjuela"}correo{"Marcela.orjuela6788@uco.net.co"}}
 }

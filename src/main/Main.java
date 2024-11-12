@@ -9,9 +9,7 @@ import syntax.Parser;
 import utils.exceptions.ParseException;
 import semantic.SemanticAnalyzer;
 
-
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
@@ -19,8 +17,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        //rutas src/data/ejemplo_gramatica.txt, src/data/entrada.txt
         Scanner scanner = new Scanner(System.in);
-//rutas src/data/ejemplo_gramatica.txt, src/data/entrada.txt
+
         // Solicitar la ruta de la gramática al usuario
         System.out.print("Ingrese la ruta del archivo de gramática: ");
         String grammarPath = scanner.nextLine();
@@ -48,11 +47,8 @@ public class Main {
             while ((line = reader.readLine()) != null) {
                 content.append(line).append("\n");
             }
-        } catch (FileNotFoundException e) {
-            System.err.println("Archivo no encontrado: " + e.getMessage());
-            return;
         } catch (IOException e) {
-            System.err.println("Error de IO: " + e.getMessage());
+            System.err.println("Error leyendo el archivo: " + e.getMessage());
             return;
         }
 
@@ -65,7 +61,7 @@ public class Main {
             System.out.println(token);
         }
 
-        // Analizar los tokens
+        // Análisis sintáctico
         Parser parser = new Parser(tokens, grammarLoader);
         try {
             ASTNode ast = parser.parse();
@@ -76,6 +72,11 @@ public class Main {
             SemanticAnalyzer semanticAnalyzer = new SemanticAnalyzer(content.toString());
             semanticAnalyzer.analyze();
             System.out.println("El análisis semántico fue exitoso. No se encontraron errores.");
+
+            // Guardar resultado en archivo HTML
+            String htmlFilename = "Salida.html";
+            semanticAnalyzer.saveToHtmlFile(htmlFilename);
+            System.out.println("Archivo HTML generado y guardado como: " + htmlFilename);
 
         } catch (ParseException e) {
             System.err.println("Error en el análisis sintáctico: cadena inválida. " + e.getMessage());
