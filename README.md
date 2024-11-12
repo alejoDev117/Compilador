@@ -57,3 +57,8 @@ Contiene la lógica principal del compilador:
 #### /loader
 -Paquete donde están todas las clases relacionadas con cargar archivos requeridos para el compilador dada una ruta especifica.
 
+## Salida 
+
+La salida se define en código Html y se hace uso de css para darle estilo, el resultado seria algo asi:
+
+![Salida.Html](src/data/Salida.jng)
